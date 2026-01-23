@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +12,25 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
     </style>
 </head>
+
 <body class="bg-[#F3F4F6] text-gray-800 h-screen flex overflow-hidden">
 
     <!-- 1. SIDEBAR CONTAINER -->
@@ -25,7 +39,7 @@
 
     <!-- MAIN CONTENT WRAPPER -->
     <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
-        
+
         <!-- 2. HEADER CONTAINER -->
         <div id="header-container"></div>
 
@@ -45,13 +59,26 @@
         async function loadComponent(elementId, filePath) {
             try {
                 const response = await fetch(filePath);
-                
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
 
                 const html = await response.text();
-                document.getElementById(elementId).innerHTML = html;
+                const container = document.getElementById(elementId);
+                container.innerHTML = html;
+
+                // Execute scripts in the loaded HTML
+                const scripts = container.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        newScript.src = script.src;
+                    } else {
+                        newScript.textContent = script.textContent;
+                    }
+                    document.body.appendChild(newScript);
+                });
             } catch (error) {
                 console.error('Error loading component:', error);
                 document.getElementById(elementId).innerHTML = `<p class="text-red-500 p-4">Error loading ${filePath}. Make sure you are running a Local Server.</p>`;
@@ -60,11 +87,12 @@
 
         // Load the 3 files
         // ensuring the DOM is fully parsed before loading
-        document.addEventListener("DOMContentLoaded", () => {
-            loadComponent('sidebar-container', './components/slidebar.html');
-            loadComponent('header-container', './components/header.html');
-            loadComponent('dashboard-container', '../pages/dashboardpage.html');
+        document.addEventListener("DOMContentLoaded", async () => {
+            await loadComponent('sidebar-container', './components/slidebar.html');
+            await loadComponent('header-container', './components/header.html');
+            await loadComponent('dashboard-container', '../pages/dashboardpage.html');
         });
     </script>
 </body>
+
 </html>

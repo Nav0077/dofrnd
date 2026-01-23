@@ -1,62 +1,150 @@
-<aside class="w-64 bg-white h-full flex flex-col border-r border-gray-100">
-    <!-- Logo -->
-    <div class="h-16 flex items-center px-6">
-        <div class="flex items-center gap-2 text-indigo-600 text-xl font-bold">
-            <i class="fa-solid fa-p"></i> <!-- Placeholder logo icon -->
-            <span class="text-gray-800 tracking-wide">DOFRND</span>
-        </div>
+<!-- SIDEBAR -->
+<aside id="sidebar" data-collapsed="false"
+  class="bg-white h-full flex flex-col border-r border-gray-100 transition-all duration-300 ease-in-out w-64">
+  <!-- LOGO -->
+  <div class="h-16 flex items-center px-6 transition-all duration-300">
+    <div class="flex items-center gap-2 text-indigo-600 text-xl font-bold">
+      <i class="fa-solid fa-infinity"></i>
+      <span class="sidebar-text text-gray-800 tracking-wide"> DOFRND </span>
     </div>
 
-    <!-- Navigation -->
-    <nav class="flex-1 px-4 space-y-2 mt-4">
-        <!-- Active Item -->
-        <a href="#" class="flex items-center gap-3 px-4 py-3 bg-[#8B5CF6] text-white rounded-xl transition-colors shadow-sm shadow-indigo-200">
-            <i class="fa-solid fa-border-all w-5"></i>
-            <span class="font-medium">Dashboard</span>
-        </a>
+    <button id="toggleSidebarBtn" class="ml-auto text-gray-400 hover:text-gray-600 transition-transform duration-300"
+      title="Toggle Sidebar">
+      <i id="toggleIcon" class="fa-solid fa-chevron-left"></i>
+    </button>
+  </div>
 
-        <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition-colors">
-            <i class="fa-regular fa-square-check w-5"></i>
-            <span class="font-medium">Tasks</span>
-        </a>
+  <!-- NAVIGATION -->
+  <nav class="flex-1 px-4 space-y-2 mt-4">
+    <a class="flex items-center gap-3 px-4 py-3 bg-indigo-500 text-white rounded-xl shadow transition-all duration-300">
+      <i class="fa-solid fa-border-all w-5 text-center flex-shrink-0"></i>
+      <span class="sidebar-text font-medium">Dashboard</span>
+    </a>
 
-        <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition-colors">
-            <i class="fa-regular fa-file-lines w-5"></i>
-            <span class="font-medium">Notes</span>
-        </a>
+    <a class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 rounded-xl transition-all duration-300">
+      <i class="fa-regular fa-square-check w-5 text-center flex-shrink-0"></i>
+      <span class="sidebar-text font-medium">Tasks</span>
+    </a>
 
-        <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition-colors">
-            <i class="fa-regular fa-calendar w-5"></i>
-            <span class="font-medium">Calendar</span>
-        </a>
+    <a class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 rounded-xl transition-all duration-300">
+      <i class="fa-regular fa-file-lines w-5 text-center flex-shrink-0"></i>
+      <span class="sidebar-text font-medium">Notes</span>
+    </a>
 
-        <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition-colors">
-            <i class="fa-solid fa-pen-nib w-5"></i>
-            <span class="font-medium">Whiteboard</span>
-        </a>
-    </nav>
+    <a class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 rounded-xl transition-all duration-300">
+      <i class="fa-regular fa-calendar w-5 text-center flex-shrink-0"></i>
+      <span class="sidebar-text font-medium">Calendar</span>
+    </a>
 
-    <!-- Bottom Actions -->
-    <div class="p-4 space-y-2 border-t border-gray-50">
-        <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-500 hover:text-gray-900 transition-colors">
-            <i class="fa-solid fa-gear w-5"></i>
-            <span class="text-sm font-medium">Settings</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-500 hover:text-gray-900 transition-colors">
-            <i class="fa-regular fa-circle-question w-5"></i>
-            <span class="text-sm font-medium">Help</span>
-        </a>
+    <a class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 rounded-xl transition-all duration-300">
+      <i class="fa-solid fa-pen-nib w-5 text-center flex-shrink-0"></i>
+      <span class="sidebar-text font-medium">Whiteboard</span>
+    </a>
+  </nav>
 
-        <!-- User Profile -->
-        <div class="flex items-center gap-3 mt-4 pt-4 px-2">
-            <img src="https://i.pravatar.cc/100?img=12" alt="User" class="w-10 h-10 rounded-full object-cover">
-            <div class="flex-1 min-w-0">
-                <p class="text-sm font-semibold text-gray-900 truncate">User</p>
-                <p class="text-xs text-gray-500 truncate">user@dofrnd.com</p>
-            </div>
-            <button class="text-gray-400 hover:text-gray-600">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </button>
-        </div>
+  <!-- BOTTOM -->
+  <div class="p-4 border-t border-gray-100 space-y-2">
+    <a class="flex items-center gap-3 px-4 py-2 text-gray-500 hover:text-gray-900 transition-all duration-300">
+      <i class="fa-solid fa-gear w-5 text-center flex-shrink-0"></i>
+      <span class="sidebar-text text-sm font-medium">Settings</span>
+    </a>
+
+    <a class="flex items-center gap-3 px-4 py-2 text-gray-500 hover:text-gray-900 transition-all duration-300">
+      <i class="fa-regular fa-circle-question w-5 text-center flex-shrink-0"></i>
+      <span class="sidebar-text text-sm font-medium">Help</span>
+    </a>
+
+    <!-- USER -->
+    <div class="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+      <img src="https://i.pravatar.cc/100?img=12"
+        class="w-10 h-10 rounded-full flex-shrink-0 transition-all duration-300" id="userAvatar" />
+
+      <div class="sidebar-text flex-1 min-w-0">
+        <p class="text-sm font-semibold truncate">User</p>
+        <p class="text-xs text-gray-500 truncate">user@dofrnd.com</p>
+      </div>
+
+      <button class="sidebar-text text-gray-400 hover:text-gray-600 transition-all duration-300" id="logoutBtn">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+      </button>
     </div>
+  </div>
 </aside>
+<style>
+  /* collapsed sidebar */
+  #sidebar[data-collapsed="true"] {
+    width: 5rem;
+    /* collapsed width */
+  }
+
+  /* hide text when collapsed */
+  #sidebar[data-collapsed="true"] .sidebar-text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* smooth text animation */
+  .sidebar-text {
+    transition: opacity 0.2s ease, width 0.2s ease;
+  }
+
+  /* center items when collapsed */
+  #sidebar[data-collapsed="true"] nav a,
+  #sidebar[data-collapsed="true"] .p-4>a {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* adjust logo area when collapsed */
+  #sidebar[data-collapsed="true"] .h-16 {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #sidebar[data-collapsed="true"] .h-16>div:first-child {
+    margin-left: 0;
+  }
+
+  #sidebar[data-collapsed="true"] #toggleSidebarBtn {
+    margin-left: 0;
+    position: absolute;
+    right: 1rem;
+  }
+
+  /* hide user avatar when collapsed */
+  #sidebar[data-collapsed="true"] #userAvatar {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* adjust user section when collapsed */
+  #sidebar[data-collapsed="true"] .flex.items-center.gap-3.mt-4 {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+</style>
+
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const toggleBtn = document.getElementById("toggleSidebarBtn");
+  const toggleIcon = document.getElementById("toggleIcon");
+
+  toggleBtn.addEventListener("click", () => {
+    const collapsed = sidebar.getAttribute("data-collapsed") === "true";
+    sidebar.setAttribute("data-collapsed", String(!collapsed));
+
+    // Update toggle icon
+    if (!collapsed) {
+      // Collapsing
+      toggleIcon.className = "fa-solid fa-chevron-right";
+    } else {
+      // Expanding
+      toggleIcon.className = "fa-solid fa-chevron-left";
+    }
+  });
+</script>
